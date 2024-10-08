@@ -1,13 +1,20 @@
+
 import 'package:flutter/material.dart';
 
 class CircularContainer extends StatelessWidget {
   final String imagePath;
   final Text story;
+  final double circwidth;
+  final double circheight;
+
 
   const CircularContainer({
     super.key, 
     required this.imagePath,
     required this.story,
+    required this.circwidth,
+    required this.circheight,
+
     
     });
 
@@ -18,8 +25,8 @@ class CircularContainer extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            width: 75,
-            height: 75,
+            width: circwidth,
+            height: circheight,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(

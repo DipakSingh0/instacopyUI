@@ -108,7 +108,7 @@ class HomeContentPage extends StatelessWidget {
                 Stack(
                   children: [
                     CircularContainer(
-                      imagePath: 'lib/images/im1.jpg',
+                      imagePath: 'lib/images/im1.jpg', circheight: 75, circwidth: 75,
                       story: Text('Add Story'),
                     ),
                     Positioned(
@@ -139,29 +139,55 @@ class HomeContentPage extends StatelessWidget {
                 //       AssetImage('lib/images/im2.jpg'), // Path to your image
                 // ),
                 CircularContainer(
-                    imagePath: 'lib/images/im2.jpg', story: Text('Cat')),
+                    imagePath: 'lib/images/im2.jpg', story: Text('Cat') 
+                   , circheight: 75, circwidth: 75,
+                ),
                 CircularContainer(
-                    imagePath: 'lib/images/im3.jpg', story: Text('HappiMan')),
+                    imagePath: 'lib/images/im3.jpg', story: Text('HappiMan') ,
+                  circheight: 75,
+                  circwidth: 75,
+                ),
                 CircularContainer(
-                    imagePath: 'lib/images/im4.jpg', story: Text('Buddha')),
+                    imagePath: 'lib/images/im4.jpg', story: Text('Buddha'),
+                  circheight: 75,
+                  circwidth: 75,
+                ),
                 CircularContainer(
-                    imagePath: 'lib/images/im5.jpg', story: Text('Jharna')),
+                    imagePath: 'lib/images/im5.jpg', story: Text('Jharna'),
+                  circheight: 75,
+                  circwidth: 75,
+                ),
                 CircularContainer(
-                    imagePath: 'lib/images/im6.jpg', story: Text('Shailesh')),
+                    imagePath: 'lib/images/im6.jpg', story: Text('Shailesh'),
+                  circheight: 75,
+                  circwidth: 75,
+                ),
                 CircularContainer(
-                    imagePath: 'lib/images/im7.jpg', story: Text('Romantic')),
+                    imagePath: 'lib/images/im7.jpg', story: Text('Romantic'),
+                  circheight: 75,
+                  circwidth: 75,
+                ),
                 CircularContainer(
-                    imagePath: 'lib/images/im8.jpg', story: Text('Bishnu')),
+                    imagePath: 'lib/images/im8.jpg', story: Text('Bishnu'),
+                  circheight: 75,
+                  circwidth: 75,
+                ),
                 CircularContainer(
-                    imagePath: 'lib/images/im9.jpg', story: Text('AmresPoori')),
+                    imagePath: 'lib/images/im9.jpg', story: Text('AmresPoori'),
+                  circheight: 75,
+                  circwidth: 75,
+                ),
                 CircularContainer(
-                    imagePath: 'lib/images/im10.png', story: Text('DhamiG')),
+                    imagePath: 'lib/images/im10.png', story: Text('DhamiG'),
+                  circheight: 75,
+                  circwidth: 75,
+                ),
               ],
             ),
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: 18,
+              itemCount: 3,
               itemBuilder: (BuildContext context, int index) {
                 return Card(
                   // color: Colors.white,
@@ -218,6 +244,110 @@ class HomeContentPage extends StatelessWidget {
                             icon: Icon(Icons.bookmark_border),
                           ),
                         ],
+                      ),
+                      ListTile(
+                        leading: const CircleAvatar(
+                            backgroundImage: AssetImage('lib/images/im1.jpg')),
+                        title: const Text('dipak_singh000'),
+                        subtitle: const Text('Suggested for you',
+                            style: TextStyle(fontSize: 12)),
+                        trailing: IconButton(
+                          onPressed: () {},
+                          icon: const Icon(Icons.menu),
+                        ),
+                      ),
+                      Container(
+                        height: 300,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage('lib/images/im2.jpg'))),
+                      ),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: IconButton(
+                              onPressed: () {},
+                              icon: Icon(Icons.favorite_border),
+                            ),
+                          ),
+                          Text(
+                            '675K',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.chat_bubble_outline_rounded),
+                          ),
+                          Text(
+                            '75K',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.send),
+                          ),
+                          SizedBox(
+                            width: 250,
+                          ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.bookmark_border),
+                          ),
+                        ],
+                      ),
+                      ListTile(
+                        leading: const CircleAvatar(
+                            backgroundImage: AssetImage('lib/images/im1.jpg')),
+                        title: const Text('dipak_singh000'),
+                        subtitle: const Text('Suggested for you',
+                            style: TextStyle(fontSize: 12)),
+                        trailing: IconButton(
+                          onPressed: () {},
+                          icon: const Icon(Icons.menu),
+                        ),
+                      ),
+                      Container(
+                        height: 300,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage('lib/images/im3.jpg'))),
+                      ),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: IconButton(
+                              onPressed: () {},
+                              icon: Icon(Icons.favorite_border),
+                            ),
+                          ),
+                          Text(
+                            '675K',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.chat_bubble_outline_rounded),
+                          ),
+                          Text(
+                            '75K',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.send),
+                          ),
+                          SizedBox(
+                            width: 250,
+                          ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.bookmark_border),
+                          ),
+                        ],
                       )
                     ],
                   ),
@@ -230,178 +360,3 @@ class HomeContentPage extends StatelessWidget {
     );
   }
 }
-
-// class MyHomePage extends StatefulWidget {
-//   const MyHomePage({super.key});
-
-//   @override
-//   MyHomePageState createState() => MyHomePageState();
-// }
-
-// class MyHomePageState extends State<MyHomePage> {
-//   int _selectedIndex = 0;
-
-//   // List of pages
-//   final List<Widget> _pages = [
-//     HomeContentPage(), // Actual home content widget
-//     SearchPage(),
-//     AddPage(),
-//     ReelsPage(),
-//     MyProfilePage(),
-//   ];
-
-//   void _onItemTapped(int index) {
-//     setState(() {
-//       _selectedIndex = index;
-//     });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       // Only display the AppBar if the user is on the home page (index 0)
-//       appBar: _selectedIndex == 0
-//           ? AppBar(
-//               title: Row(
-//                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                 children: <Widget>[
-//                   TextButton(
-//                     onPressed: null,
-//                     child: Text(
-//                       'Instagram',
-//                       style: GoogleFonts.pacifico(
-//                         textStyle: TextStyle(
-//                           fontSize: 28,
-//                           color: Colors.black,
-//                         ),
-//                       ),
-//                     ),
-//                   ),
-//                   Row(
-//                     mainAxisSize: MainAxisSize.min,
-//                     children: [
-//                       IconButton(
-//                         onPressed: null,
-//                         icon: Image.asset('lib/images/heart.png',
-//                             width: 24, height: 24),
-//                       ),
-//                       SizedBox(width: 3),
-//                       IconButton(
-//                         onPressed: null,
-//                         icon: Image.asset('lib/images/messenger.png',
-//                             width: 24, height: 24),
-//                       ),
-//                       SizedBox(width: 3),
-//                     ],
-//                   ),
-//                 ],
-//               ),
-//             )
-//           : null, // Don't show AppBar for other pages
-
-//       body: _pages[_selectedIndex], // Show the selected page
-
-//       bottomNavigationBar: MyBottomNavBar(
-//         selectedIndex: _selectedIndex,
-//         onTap: _onItemTapped,
-//       ),
-//     );
-//   }
-// }
-
-// class HomeContentPage extends StatelessWidget {
-//   const HomeContentPage({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Column(
-//         children: [
-//           SingleChildScrollView(
-//             scrollDirection: Axis.horizontal,
-//             child: Row(
-//               children: [
-//                 Stack(
-//                   children: [
-//                     CircularContainer(
-//                       imagePath: 'lib/images/im1.jpg',
-//                       story: Text('Add Story'),
-//                     ),
-//                     Positioned(
-//                       bottom: 35,
-//                       right: 12,
-//                       child: Container(
-//                         width: 26,
-//                         height: 26,
-//                         decoration: BoxDecoration(
-//                           shape: BoxShape.circle,
-//                           border: Border.all(width: 2, color: Colors.white),
-//                           color: Colors.blue,
-//                         ),
-//                         child: Center(
-//                           child: Icon(
-//                             Icons.add,
-//                             size: 18,
-//                             color: Colors.white,
-//                           ),
-//                         ),
-//                       ),
-//                     ),
-//                   ],
-//                 ),
-//                 // CircleAvatar(
-//                 //   radius: 50, // Size of the circle avatar
-//                 //   backgroundImage:
-//                 //       AssetImage('lib/images/im2.jpg'), // Path to your image
-//                 // ),
-//                 CircularContainer(
-//                     imagePath: 'lib/images/im2.jpg', story: Text('Cat')),
-//                 CircularContainer(
-//                     imagePath: 'lib/images/im3.jpg', story: Text('HappiMan')),
-//                 CircularContainer(
-//                     imagePath: 'lib/images/im4.jpg', story: Text('Buddha')),
-//                 CircularContainer(
-//                     imagePath: 'lib/images/im5.jpg', story: Text('Jharna')),
-//                 CircularContainer(
-//                     imagePath: 'lib/images/im6.jpg', story: Text('Shailesh')),
-//                 CircularContainer(
-//                     imagePath: 'lib/images/im7.jpg', story: Text('Romantic')),
-//                 CircularContainer(
-//                     imagePath: 'lib/images/im8.jpg', story: Text('Bishnu')),
-//                 CircularContainer(
-//                     imagePath: 'lib/images/im9.jpg', story: Text('AmresPoori')),
-//                 CircularContainer(
-//                     imagePath: 'lib/images/im10.png', story: Text('DhamiG')),
-//               ],
-//             ),
-//           ),
-//           SizedBox(
-//             height: 100, 
-//             width: double.infinity,
-            
-//             child: ListView.builder(
-//               itemCount: 5,
-//               itemBuilder: (BuildContext context, int index) {
-//                 return Card(
-//                   color: Colors.blue,
-//                   child: Column(
-//                     children: [
-//                       ListTile(
-//                         leading: CircleAvatar(backgroundImage: AssetImage('lib/images/im1.jpg' )),
-//                         title: Text('dipak_singh000'),
-//                         subtitle: Text('suggested for you', style: TextStyle(fontSize: 12 ),),
-//                         trailing: IconButton(
-//                           onPressed: () {}, 
-//                           icon: Icon(Icons.menu)),
-//                       ),
-//                     ],
-//                   )
-//                 );
-//               },
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
