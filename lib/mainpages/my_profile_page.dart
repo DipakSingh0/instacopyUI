@@ -17,29 +17,44 @@ class _MyProfilePageState extends State<MyProfilePage> {
   Widget build(BuildContext context) {
     // Size screenSize = MediaQuery.of(context).size;
 
-    return Scaffold(
-      appBar: AppBar(   
-        title: MyAppBar(),   //first appbar row
-      ),
+    return NestedScrollView(
+      headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+        return [
+          SliverAppBar(
+            pinned: false,
+            expandedHeight: 50.0,
+            flexibleSpace: FlexibleSpaceBar(
+              title: MyAppBar(),  // xustom
+            ),
+          ),
+        ];
+      },
       body: Padding(
-        padding: const EdgeInsets.all(5),
-        child: SizedBox(
-          height: 400,
-          child: Column(
-            children: [
-            // first row for profilepic , post , following and followers
-            MyProfilePicRow(),
+        padding: const EdgeInsets.all(5.0),
+        child: CustomScrollView(
+          slivers: [
+            // SliverToBoxAdapter wraps non-sliver widgets
+            SliverToBoxAdapter(
+              child: Column(
+                children: [
+                  // First row for profile pic, posts, following, and followers
+                  MyProfilePicRow(),
+                  SizedBox(height: 10),
 
-            SizedBox(height: 10),
+                  // Second row for buttons
+                  MyButtonRow(),
+                  SizedBox(height: 10),
 
-            // 2nd Button rows .................
-            MyButtonRow(),
+                  // Third  myhighlights row
+                  MyHighlightsRow(),
+                  SizedBox(height: 4),
 
-            //3rd scrolleable highlights row
-            MyHighlightsRow(),
-          
-            MyGridViewPost(),
-          ]),
+                  //fourth posts 
+                  MyGridViewPost(),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -59,7 +74,7 @@ class MyAppBar extends StatelessWidget {
           // PopupMenuButton to show accounts
           PopupMenuButton<String>(
             onSelected: (String value) {
-              // print(value); 
+              // print(value);
             },
             itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
               const PopupMenuItem<String>(
@@ -269,39 +284,39 @@ class MyButtonRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size screenSize = MediaQuery.of(context).size;    
+    Size screenSize = MediaQuery.of(context).size;
     return Row(
-               children: [
-                Container(
-                    height: 35,
-                    width: screenSize.width / 2 - 32,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.brown[50],
-                    ),
-                    child: Center(child: Text('Edit profile'))),
-                SizedBox(width: 8),
-                Container(
-                    height: 35,
-                    width: screenSize.width / 2 - 32,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.brown[50],
-                    ),
-                    child: Center(child: Text('Share profile'))),
-                SizedBox(width: 8),
-                Container(
-                    height: 35,
-                    width: 35,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.brown[50],
-                    ),
-                    child: Center(
-                      child: Icon(Icons.person_add),
-                    )),
-              ],
-            );
+      children: [
+        Container(
+            height: 35,
+            width: screenSize.width / 2 - 32,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.brown[50],
+            ),
+            child: Center(child: Text('Edit profile'))),
+        SizedBox(width: 8),
+        Container(
+            height: 35,
+            width: screenSize.width / 2 - 32,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.brown[50],
+            ),
+            child: Center(child: Text('Share profile'))),
+        SizedBox(width: 8),
+        Container(
+            height: 35,
+            width: 35,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.brown[50],
+            ),
+            child: Center(
+              child: Icon(Icons.person_add),
+            )),
+      ],
+    );
   }
 }
 
@@ -311,49 +326,49 @@ class MyHighlightsRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  CircularContainer(
-                    imagePath: 'lib/images/im2.jpg',
-                    story: Text(''),
-                    circwidth: 60,
-                    circheight: 60,
-                  ),
-                  CircularContainer(
-                    imagePath: 'lib/images/im3.jpg',
-                    story: Text(''),
-                    circwidth: 60,
-                    circheight: 60,
-                  ),
-                  CircularContainer(
-                    imagePath: 'lib/images/im4.jpg',
-                    story: Text(''),
-                    circwidth: 60,
-                    circheight: 60,
-                  ),
-                  CircularContainer(
-                    imagePath: 'lib/images/im5.jpg',
-                    story: Text(''),
-                    circwidth: 60,
-                    circheight: 60,
-                  ),
-                  CircularContainer(
-                    imagePath: 'lib/images/im6.jpg',
-                    story: Text(''),
-                    circwidth: 60,
-                    circheight: 60,
-                  ),
-                  CircularContainer(
-                    imagePath: 'lib/images/im7.jpg',
-                    story: Text(''),
-                    circwidth: 60,
-                    circheight: 60,
-                  ),
-                ],
-              ),
-            );
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          CircularContainer(
+            imagePath: 'lib/images/im2.jpg',
+            story: Text(''),
+            circwidth: 60,
+            circheight: 60,
+          ),
+          CircularContainer(
+            imagePath: 'lib/images/im3.jpg',
+            story: Text(''),
+            circwidth: 60,
+            circheight: 60,
+          ),
+          CircularContainer(
+            imagePath: 'lib/images/im4.jpg',
+            story: Text(''),
+            circwidth: 60,
+            circheight: 60,
+          ),
+          CircularContainer(
+            imagePath: 'lib/images/im5.jpg',
+            story: Text(''),
+            circwidth: 60,
+            circheight: 60,
+          ),
+          CircularContainer(
+            imagePath: 'lib/images/im6.jpg',
+            story: Text(''),
+            circwidth: 60,
+            circheight: 60,
+          ),
+          CircularContainer(
+            imagePath: 'lib/images/im7.jpg',
+            story: Text(''),
+            circwidth: 60,
+            circheight: 60,
+          ),
+        ],
+      ),
+    );
   }
 }
 
@@ -366,24 +381,34 @@ class MyGridViewPost extends StatelessWidget {
 
     return Column(
       children: <Widget>[
-          Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: SizedBox(
-      width: screenSize.width,
-      height: 100,
-      child: GridView.count(
-        crossAxisCount: 4,
-        children: List.generate(10, (index) {
-          return Center(
-            child: Text(
-              'Item $index',
-              style: Theme.of(context).textTheme.headlineSmall,
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SizedBox(
+            width: screenSize.width,
+            height: 350,
+            child: SingleChildScrollView(
+              physics: NeverScrollableScrollPhysics(), // Disable scrolling
+              child: Column(
+                children: [
+                  GridView.count(
+                    shrinkWrap: true, // Allow GridView to shrink
+                    physics: NeverScrollableScrollPhysics(), // Disable scrolling
+                    crossAxisCount: 4,
+                    children: List.generate(10, (index) {
+                      return Center(
+                        child: Text(
+                          'Item $index',
+                          style: Theme.of(context).textTheme.headlineSmall,
+                        ),
+                      );
+                    }),
+                  ),
+                ],
+              ),
             ),
-          );
-        }),
-      ),
-    ),
-          )
-        ]);
-    }
+          ),
+        ),
+      ],
+    );
+  }
 }
