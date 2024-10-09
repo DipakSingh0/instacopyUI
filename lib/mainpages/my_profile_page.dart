@@ -15,215 +15,263 @@ class MyProfilePage extends StatefulWidget {
 class _MyProfilePageState extends State<MyProfilePage> {
   @override
   Widget build(BuildContext context) {
-    Size screenSize = MediaQuery.of(context).size;
+    // Size screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            // PopupMenuButton to show accounts
-            PopupMenuButton<String>(
-              onSelected: (String value) {
-                // print(value); // You can handle your logic here
-              },
-              itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-                const PopupMenuItem<String>(
-                  value: '1',
-                  child: Text('dipak_singh000'),
-                ),
-                const PopupMenuItem<String>(
-                  value: '2',
-                  child: Text('kittie_chyan'),
-                ),
-                const PopupMenuItem<String>(
-                  value: '3',
-                  child: Text('Add Instagram Account'),
-                ),
-              ],
-              child: Row(
-                children: [
-                  const Icon(Icons.lock_outline),
-                  const SizedBox(width: 5),
-                  const Text(
-                    'dipak_singh',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 22,
-                    ),
-                  ),
-                  const Icon(Icons.arrow_drop_down),
-                ],
-              ),
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const SettingsPage(),
-                      ),
-                    );
-                  },
-                  icon: Image.asset(
-                    'lib/images/threads.png',
-                    width: 25,
-                    height: 25,
-                  ),
-                  color: Colors.black,
-                  iconSize: 35,
-                ),
-                MyIconButton(
-                  iconName: Icons.menu,
-                  route: SettingsPage(),
-                ),
-                MyIconButton(
-                  iconName: Icons.add_box_outlined,
-                  route: SettingsPage(),
-                ),
-              ],
-            ),
-          ],
-        ),
+      appBar: AppBar(   
+        title: MyAppBar(),   //first appbar row
       ),
       body: Padding(
         padding: const EdgeInsets.all(5),
         child: SizedBox(
-          height: 206,
-          child: Column(children: [
+          height: 400,
+          child: Column(
+            children: [
             // first row for profilepic , post , following and followers
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-              Stack(
+            MyProfilePicRow(),
+
+            SizedBox(height: 10),
+
+            // 2nd Button rows .................
+            MyButtonRow(),
+
+            //3rd scrolleable highlights row
+            MyHighlightsRow(),
+          
+            MyGridViewPost(),
+          ]),
+        ),
+      ),
+    );
+  }
+}
+
+// topmost appbar
+class MyAppBar extends StatelessWidget {
+  const MyAppBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          // PopupMenuButton to show accounts
+          PopupMenuButton<String>(
+            onSelected: (String value) {
+              // print(value); 
+            },
+            itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+              const PopupMenuItem<String>(
+                value: '1',
+                child: Text('dipak_singh000'),
+              ),
+              const PopupMenuItem<String>(
+                value: '2',
+                child: Text('kittie_chyan'),
+              ),
+              const PopupMenuItem<String>(
+                value: '3',
+                child: Text('Add Instagram Account'),
+              ),
+            ],
+            child: Row(
+              children: [
+                const Icon(Icons.lock_outline),
+                const SizedBox(width: 5),
+                const Text(
+                  'dipak_singh',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 22,
+                  ),
+                ),
+                const Icon(Icons.arrow_drop_down),
+              ],
+            ),
+          ),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SettingsPage(),
+                    ),
+                  );
+                },
+                icon: Image.asset(
+                  'lib/images/threads.png',
+                  width: 25,
+                  height: 25,
+                ),
+                color: Colors.black,
+                iconSize: 35,
+              ),
+              MyIconButton(
+                iconName: Icons.menu,
+                route: SettingsPage(),
+              ),
+              MyIconButton(
+                iconName: Icons.add_box_outlined,
+                route: SettingsPage(),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+//Row1 for profile
+class MyProfilePicRow extends StatelessWidget {
+  const MyProfilePicRow({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    Size screenSize = MediaQuery.of(context).size;
+
+    return Row(
+        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Stack(
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 22.0),
-                    child: Column(
-                      children: [
-                        CircularContainer(
-                          imagePath: 'lib/images/im1.jpg', 
-                          circheight: 60,  circwidth: 60,
-                          story: Text(
-                            'Dipak Singh',
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        Align(
-                            alignment: Alignment.centerRight,
-                            child: Text('Silence is the best medicine')),
-                      ],
+                  CircularContainer(
+                    imagePath: 'lib/images/im1.jpg',
+                    circheight: 60,
+                    circwidth: 60,
+                    story: Text(
+                      'Dipak Singh',
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
-                  Positioned(
-                    bottom: 56,
-                    right: 50,
-                    child: Container(
-                      width: 22,
-                      height: 22,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(width: 2, color: Colors.white),
-                        color: Colors.blue,
-                      ),
-                      child: Center(
-                        child: Icon(
-                          Icons.add,
-                          size: 17,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20),
+                    child: Text('Silence is the best medicine'),
                   ),
                 ],
               ),
-              SizedBox(
-                height: 120,
-                width: 100,
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        '7',
-                        style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        'posts',
-                        style: TextStyle(fontSize: 15),
-                      ),
-                    ],
+              Positioned(
+                bottom: 56,
+                right: 50,
+                child: Container(
+                  width: 22,
+                  height: 22,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(width: 2, color: Colors.white),
+                    color: Colors.blue,
                   ),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            FollowPage()), // Replace with your page
-                  );
-                },
-                child: SizedBox(
-                  height: 120,
-                  width: 100,
                   child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          '153',
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'following',
-                          style: TextStyle(fontSize: 15),
-                        ),
-                      ],
+                    child: Icon(
+                      Icons.add,
+                      size: 17,
+                      color: Colors.white,
                     ),
                   ),
                 ),
               ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            FollowPage()), // Replace with your page
-                  );
-                },
-                child: SizedBox(
-                  height: 120,
-                  width: 100,
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          '153',
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'following',
-                          style: TextStyle(fontSize: 15),
-                        ),
-                      ],
-                    ),
+            ],
+          ),
+          SizedBox(
+            height: 120,
+            width: screenSize.width / 4 - 30,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    '7',
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                   ),
+                  Text(
+                    'posts',
+                    style: TextStyle(fontSize: 15),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        FollowPage()), // Replace with your page
+              );
+            },
+            child: SizedBox(
+              height: 120,
+              width: screenSize.width / 4 - 30,
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      '153',
+                      style:
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      'following',
+                      style: TextStyle(fontSize: 15),
+                    ),
+                  ],
                 ),
               ),
-            ]),
-            SizedBox(height: 12),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        FollowPage()), // Replace with your page
+              );
+            },
+            child: SizedBox(
+              height: 120,
+              width: screenSize.width / 4 - 30,
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      '153',
+                      style:
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      'following',
+                      style: TextStyle(fontSize: 15),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ]);
+  }
+}
 
-            // 2nd row .................
-            Row(
-              children: [
+//2nd row button row
+
+class MyButtonRow extends StatelessWidget {
+  const MyButtonRow({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    Size screenSize = MediaQuery.of(context).size;    
+    return Row(
+               children: [
                 Container(
                     height: 35,
                     width: screenSize.width / 2 - 32,
@@ -233,7 +281,6 @@ class _MyProfilePageState extends State<MyProfilePage> {
                     ),
                     child: Center(child: Text('Edit profile'))),
                 SizedBox(width: 8),
-            
                 Container(
                     height: 35,
                     width: screenSize.width / 2 - 32,
@@ -243,7 +290,6 @@ class _MyProfilePageState extends State<MyProfilePage> {
                     ),
                     child: Center(child: Text('Share profile'))),
                 SizedBox(width: 8),
-            
                 Container(
                     height: 35,
                     width: 35,
@@ -254,48 +300,90 @@ class _MyProfilePageState extends State<MyProfilePage> {
                     child: Center(
                       child: Icon(Icons.person_add),
                     )),
-                
               ],
-            ),
-                   
+            );
+  }
+}
 
-            SingleChildScrollView(
+// 3rd highlights row
+class MyHighlightsRow extends StatelessWidget {
+  const MyHighlightsRow({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return  SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
                   CircularContainer(
-                      imagePath: 'lib/images/im2.jpg', story: Text('') , circwidth: 60, circheight: 60,),
-                  CircularContainer(
-                      imagePath: 'lib/images/im3.jpg', story: Text(''), circwidth: 60,
-                    circheight: 60,
-                  ),
-                  CircularContainer(
-                      imagePath: 'lib/images/im4.jpg', story: Text(''),
+                    imagePath: 'lib/images/im2.jpg',
+                    story: Text(''),
                     circwidth: 60,
                     circheight: 60,
                   ),
                   CircularContainer(
-                      imagePath: 'lib/images/im5.jpg', story: Text(''),
+                    imagePath: 'lib/images/im3.jpg',
+                    story: Text(''),
                     circwidth: 60,
                     circheight: 60,
                   ),
                   CircularContainer(
-                      imagePath: 'lib/images/im6.jpg', story: Text(''),
+                    imagePath: 'lib/images/im4.jpg',
+                    story: Text(''),
                     circwidth: 60,
                     circheight: 60,
                   ),
                   CircularContainer(
-                      imagePath: 'lib/images/im7.jpg', story: Text(''),
+                    imagePath: 'lib/images/im5.jpg',
+                    story: Text(''),
                     circwidth: 60,
                     circheight: 60,
                   ),
-                  
-                 ],
+                  CircularContainer(
+                    imagePath: 'lib/images/im6.jpg',
+                    story: Text(''),
+                    circwidth: 60,
+                    circheight: 60,
+                  ),
+                  CircularContainer(
+                    imagePath: 'lib/images/im7.jpg',
+                    story: Text(''),
+                    circwidth: 60,
+                    circheight: 60,
+                  ),
+                ],
               ),
-            ),
-          ]),
-        ),
-      ),
-    );
+            );
   }
+}
+
+class MyGridViewPost extends StatelessWidget {
+  const MyGridViewPost({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    Size screenSize = MediaQuery.of(context).size;
+
+    return Column(
+      children: <Widget>[
+          Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: SizedBox(
+      width: screenSize.width,
+      height: 100,
+      child: GridView.count(
+        crossAxisCount: 4,
+        children: List.generate(10, (index) {
+          return Center(
+            child: Text(
+              'Item $index',
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
+          );
+        }),
+      ),
+    ),
+          )
+        ]);
+    }
 }
