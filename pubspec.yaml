@@ -75,6 +75,18 @@ flutter:
     - lib/images/im8.jpg
     - lib/images/im9.jpg
     - lib/images/im10.png
+    
+    - lib/images/hi1.jpg
+    - lib/images/hi2.jpg
+    - lib/images/hi3.jpg
+    - lib/images/hi4.jpg
+    - lib/images/hi5.jpg
+    - lib/images/hi6.jpg
+    - lib/images/hi7.jpg
+    - lib/images/hi8.jpg
+    - lib/images/hi9.jpg
+    - lib/images/hi10.jpg
+
     - lib/images/heart.png
     - lib/images/messenger.png
     - lib/images/threads.png

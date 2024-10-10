@@ -24,7 +24,8 @@ class _MyProfilePageState extends State<MyProfilePage> {
             pinned: false,
             expandedHeight: 50.0,
             flexibleSpace: FlexibleSpaceBar(
-              title: MyAppBar(),  // xustom
+              title: Align(
+                  alignment: Alignment.topLeft, child: MyAppBar()), // xustom
             ),
           ),
         ];
@@ -49,7 +50,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                   MyHighlightsRow(),
                   SizedBox(height: 4),
 
-                  //fourth posts 
+                  //fourth posts
                   MyGridViewPost(),
                 ],
               ),
@@ -105,8 +106,9 @@ class MyAppBar extends StatelessWidget {
               ],
             ),
           ),
+          // SizedBox(width: 180),
           Row(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisSize: MainAxisSize.max,
             children: [
               IconButton(
                 onPressed: () {
@@ -126,11 +128,11 @@ class MyAppBar extends StatelessWidget {
                 iconSize: 35,
               ),
               MyIconButton(
-                iconName: Icons.menu,
+                iconName: Icons.add_box_outlined,
                 route: SettingsPage(),
               ),
               MyIconButton(
-                iconName: Icons.add_box_outlined,
+                iconName: Icons.menu,
                 route: SettingsPage(),
               ),
             ],
@@ -149,131 +151,128 @@ class MyProfilePicRow extends StatelessWidget {
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
 
-    return Row(
-        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    return Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+      Stack(
         children: [
-          Stack(
+          Column(
+            // mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CircularContainer(
-                    imagePath: 'lib/images/im1.jpg',
-                    circheight: 60,
-                    circwidth: 60,
-                    story: Text(
-                      'Dipak Singh',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20),
-                    child: Text('Silence is the best medicine'),
-                  ),
-                ],
-              ),
-              Positioned(
-                bottom: 56,
-                right: 50,
-                child: Container(
-                  width: 22,
-                  height: 22,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(width: 2, color: Colors.white),
-                    color: Colors.blue,
-                  ),
-                  child: Center(
-                    child: Icon(
-                      Icons.add,
-                      size: 17,
-                      color: Colors.white,
-                    ),
+              Align(
+                alignment: Alignment.topLeft,
+                child: CircularContainer(
+                  imagePath: 'lib/images/im1.jpg',
+                  circheight: 60,
+                  circwidth: 60,
+                  story: Text(
+                    'Dipak Singh',
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: Text('Silence is the best medicine'),
               ),
             ],
           ),
-          SizedBox(
-            height: 120,
-            width: screenSize.width / 4 - 30,
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    '7',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    'posts',
-                    style: TextStyle(fontSize: 15),
-                  ),
-                ],
+          Positioned(
+            bottom: 56,
+            right: 60,
+            child: Container(
+              width: 22,
+              height: 22,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(width: 2, color: Colors.white),
+                color: Colors.blue,
               ),
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        FollowPage()), // Replace with your page
-              );
-            },
-            child: SizedBox(
-              height: 120,
-              width: screenSize.width / 4 - 30,
               child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      '153',
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      'following',
-                      style: TextStyle(fontSize: 15),
-                    ),
-                  ],
+                child: Icon(
+                  Icons.add,
+                  size: 17,
+                  color: Colors.white,
                 ),
               ),
             ),
           ),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        FollowPage()), // Replace with your page
-              );
-            },
-            child: SizedBox(
-              height: 120,
-              width: screenSize.width / 4 - 30,
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      '153',
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      'following',
-                      style: TextStyle(fontSize: 15),
-                    ),
-                  ],
-                ),
+        ],
+      ),
+      SizedBox(
+        height: 120,
+        width: screenSize.width / 4 - 30,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                '7',
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
               ),
+              Text(
+                'posts',
+                style: TextStyle(fontSize: 15),
+              ),
+            ],
+          ),
+        ),
+      ),
+      GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => FollowPage()), // Replace with your page
+          );
+        },
+        child: SizedBox(
+          height: 120,
+          width: screenSize.width / 4 - 30,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  '153',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  'following',
+                  style: TextStyle(fontSize: 15),
+                ),
+              ],
             ),
           ),
-        ]);
+        ),
+      ),
+      GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => FollowPage()), // Replace with your page
+          );
+        },
+        child: SizedBox(
+          height: 120,
+          width: screenSize.width / 4 - 40,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  '153',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  'following',
+                  style: TextStyle(fontSize: 15),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    ]);
   }
 }
 
@@ -332,37 +331,43 @@ class MyHighlightsRow extends StatelessWidget {
         children: [
           CircularContainer(
             imagePath: 'lib/images/im2.jpg',
-            story: Text(''),
+            story: Text('hiking'),
             circwidth: 60,
             circheight: 60,
           ),
           CircularContainer(
             imagePath: 'lib/images/im3.jpg',
-            story: Text(''),
+            story: Text('Nanakmatta'),
             circwidth: 60,
             circheight: 60,
           ),
           CircularContainer(
             imagePath: 'lib/images/im4.jpg',
-            story: Text(''),
+            story: Text('A day in FWU'),
             circwidth: 60,
             circheight: 60,
           ),
           CircularContainer(
             imagePath: 'lib/images/im5.jpg',
-            story: Text(''),
+            story: Text('Jharna'),
             circwidth: 60,
             circheight: 60,
           ),
           CircularContainer(
             imagePath: 'lib/images/im6.jpg',
-            story: Text(''),
+            story: Text('MinorProject'),
             circwidth: 60,
             circheight: 60,
           ),
           CircularContainer(
             imagePath: 'lib/images/im7.jpg',
-            story: Text(''),
+            story: Text('Flowers'),
+            circwidth: 60,
+            circheight: 60,
+          ),
+          CircularContainer(
+            imagePath: 'lib/images/im2.jpg',
+            story: Text('hiking'),
             circwidth: 60,
             circheight: 60,
           ),
@@ -382,7 +387,7 @@ class MyGridViewPost extends StatelessWidget {
     return Column(
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(4.0),
           child: SizedBox(
             width: screenSize.width,
             height: 350,
@@ -392,13 +397,30 @@ class MyGridViewPost extends StatelessWidget {
                 children: [
                   GridView.count(
                     shrinkWrap: true, // Allow GridView to shrink
-                    physics: NeverScrollableScrollPhysics(), // Disable scrolling
+                    physics:
+                        NeverScrollableScrollPhysics(), // Disable scrolling
                     crossAxisCount: 4,
-                    children: List.generate(10, (index) {
+                    children: List.generate(6, (index) {
+                      List<String> imagePaths = [
+                        'lib/images/im2.jpg',
+                        'lib/images/im3.jpg',
+                        'lib/images/im4.jpg',
+                        'lib/images/im5.jpg',
+                        'lib/images/im6.jpg',
+                        'lib/images/im7.jpg',
+                        // 'lib/images/im1.jpg',
+                        // 'lib/images/im1.jpg',
+                        // 'lib/images/im1.jpg',
+                      ];
                       return Center(
-                        child: Text(
-                          'Item $index',
-                          style: Theme.of(context).textTheme.headlineSmall,
+                        child: Padding(
+                          padding: const EdgeInsets.all(1.0),
+                          child: SizedBox(
+                              width: screenSize.width / 4,
+                              height: screenSize.width / 4,
+                              child: FittedBox(
+                                  fit: BoxFit.fill,
+                                  child: Image.asset(imagePaths[index]))),
                         ),
                       );
                     }),
