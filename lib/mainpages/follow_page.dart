@@ -6,6 +6,15 @@ class FollowPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return MyDefaultTab();
+  }
+}
+
+class MyDefaultTab extends StatelessWidget {
+  const MyDefaultTab({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     return DefaultTabController(
       length: 4,
       child: Scaffold(
@@ -16,30 +25,37 @@ class FollowPage extends StatelessWidget {
             indicatorColor: Colors.white,
             indicatorWeight: 4.0,
             tabs: [
-              Text(
-                '157 followers',
+              Tab(
+                child: Text(
+                  '157 followers',
+                ),
               ),
-              Text(
-                '153 following',
+              Tab(
+                child: Text(
+                  '153 following',
+                ),
               ),
-              Text(
-                '0 subscriptions',
+              Tab(
+                child: Text(
+                  '0 subscriptions',
+                ),
               ),
-              Text(
-                'Flagged',
-              )
+              Tab(
+                child: Text(
+                  'Flagged',
+                ),
+              ),
             ],
           ),
         ),
         body: TabBarView(
-          
           children: [
             // 1st followers tab
             Column(
-              mainAxisAlignment: MainAxisAlignment.start ,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 MySearchBar(),
-                Align(
+                const Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
                     'Categories',
@@ -49,7 +65,7 @@ class FollowPage extends StatelessWidget {
                 ListTile(
                   leading: Image.asset('lib/images/im1.jpg'),
                 ),
-                Align(
+                const Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
                     'All followers',

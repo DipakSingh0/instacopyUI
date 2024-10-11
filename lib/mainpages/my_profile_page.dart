@@ -51,6 +51,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                   SizedBox(height: 4),
 
                   //fourth posts
+                  // MyDefaultTabBar(),
                   MyGridViewPost(),
                 ],
               ),
@@ -377,6 +378,44 @@ class MyHighlightsRow extends StatelessWidget {
   }
 }
 
+// class MyDefaultTabBar extends StatelessWidget {
+//   const MyDefaultTabBar({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return DefaultTabController(
+//       length: 4,
+//       child: Scaffold(
+//         appBar: AppBar(
+//           title: const Text('dipak_singh000'),
+//           bottom: const TabBar(
+//             isScrollable: true,
+//             indicatorColor: Colors.white,
+//             indicatorWeight: 4.0,
+//             tabs: [
+//               Tab(child: Icon(Icons.abc_sharp)),
+//               Tab(child: Icon(Icons.abc_sharp)),
+//               Tab(child: Icon(Icons.abc_sharp)),
+//             ],
+//           ),
+//         ),
+//         body: const TabBarView(
+//           children: [
+//             // 1st followers tab
+//             Center(
+//               child: MyGridViewPost(),
+//             ),
+//             // 2nd following tab
+//             Center(child: Text("Following Tab")),
+//             // 3rd Subscription tab
+//             Center(child: Text("Subscriptions Tab")),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
 class MyGridViewPost extends StatelessWidget {
   const MyGridViewPost({super.key});
 
@@ -384,53 +423,34 @@ class MyGridViewPost extends StatelessWidget {
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
 
-    return Column(
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(4.0),
-          child: SizedBox(
-            width: screenSize.width,
-            height: 350,
-            child: SingleChildScrollView(
-              physics: NeverScrollableScrollPhysics(), // Disable scrolling
-              child: Column(
-                children: [
-                  GridView.count(
-                    shrinkWrap: true, // Allow GridView to shrink
-                    physics:
-                        NeverScrollableScrollPhysics(), // Disable scrolling
-                    crossAxisCount: 4,
-                    children: List.generate(6, (index) {
-                      List<String> imagePaths = [
-                        'lib/images/im2.jpg',
-                        'lib/images/im3.jpg',
-                        'lib/images/im4.jpg',
-                        'lib/images/im5.jpg',
-                        'lib/images/im6.jpg',
-                        'lib/images/im7.jpg',
-                        // 'lib/images/im1.jpg',
-                        // 'lib/images/im1.jpg',
-                        // 'lib/images/im1.jpg',
-                      ];
-                      return Center(
-                        child: Padding(
-                          padding: const EdgeInsets.all(1.0),
-                          child: SizedBox(
-                              width: screenSize.width / 4,
-                              height: screenSize.width / 4,
-                              child: FittedBox(
-                                  fit: BoxFit.fill,
-                                  child: Image.asset(imagePaths[index]))),
-                        ),
-                      );
-                    }),
-                  ),
-                ],
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: GridView.count(
+        crossAxisCount: 4,
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(), // Disable scrolling
+        children: List.generate(6, (index) {
+          List<String> imagePaths = [
+            'lib/images/im2.jpg',
+            'lib/images/im3.jpg',
+            'lib/images/im4.jpg',
+            'lib/images/im5.jpg',
+            'lib/images/im6.jpg',
+            'lib/images/im7.jpg',
+          ];
+          return Padding(
+            padding: const EdgeInsets.all(1.0),
+            child: SizedBox(
+              width: screenSize.width / 4,
+              height: screenSize.width / 4,
+              child: FittedBox(
+                fit: BoxFit.fill,
+                child: Image.asset(imagePaths[index]),
               ),
             ),
-          ),
-        ),
-      ],
+          );
+        }),
+      ),
     );
   }
 }
