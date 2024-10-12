@@ -24,8 +24,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
             pinned: false,
             expandedHeight: 50.0,
             flexibleSpace: FlexibleSpaceBar(
-              title: Align(
-                  alignment: Alignment.topLeft, child: MyAppBar()), // xustom
+              title: MyAppBar(), // xustom
             ),
           ),
         ];
@@ -48,7 +47,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
 
                   // Third  myhighlights row
                   MyHighlightsRow(),
-                  SizedBox(height: 4),
+                  // SizedBox(height: 4),
 
                   //fourth posts
                   // MyDefaultTabBar(),
@@ -95,7 +94,7 @@ class MyAppBar extends StatelessWidget {
             child: Row(
               children: [
                 const Icon(Icons.lock_outline),
-                const SizedBox(width: 5),
+                const SizedBox(width: 3),
                 const Text(
                   'dipak_singh',
                   style: TextStyle(
@@ -109,7 +108,7 @@ class MyAppBar extends StatelessWidget {
           ),
           // SizedBox(width: 180),
           Row(
-            mainAxisSize: MainAxisSize.max,
+            mainAxisSize: MainAxisSize.min,
             children: [
               IconButton(
                 onPressed: () {
@@ -171,14 +170,14 @@ class MyProfilePicRow extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 20),
+                padding: const EdgeInsets.only(left: 1.0),
                 child: Text('Silence is the best medicine'),
               ),
             ],
           ),
           Positioned(
-            bottom: 56,
-            right: 60,
+            bottom: 50,
+            right: 50,
             child: Container(
               width: 22,
               height: 22,
@@ -200,7 +199,7 @@ class MyProfilePicRow extends StatelessWidget {
       ),
       SizedBox(
         height: 120,
-        width: screenSize.width / 4 - 30,
+        width: screenSize.width / 4 - 35,
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -217,6 +216,7 @@ class MyProfilePicRow extends StatelessWidget {
           ),
         ),
       ),
+      SizedBox(width: 5),
       GestureDetector(
         onTap: () {
           Navigator.push(
@@ -227,7 +227,7 @@ class MyProfilePicRow extends StatelessWidget {
         },
         child: SizedBox(
           height: 120,
-          width: screenSize.width / 4 - 30,
+          width: screenSize.width / 4 - 35,
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -237,7 +237,7 @@ class MyProfilePicRow extends StatelessWidget {
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  'following',
+                  'followers',
                   style: TextStyle(fontSize: 15),
                 ),
               ],
@@ -245,6 +245,8 @@ class MyProfilePicRow extends StatelessWidget {
           ),
         ),
       ),
+      SizedBox(width: 5),
+
       GestureDetector(
         onTap: () {
           Navigator.push(
@@ -255,7 +257,7 @@ class MyProfilePicRow extends StatelessWidget {
         },
         child: SizedBox(
           height: 120,
-          width: screenSize.width / 4 - 40,
+          width: screenSize.width / 4 - 35,
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -424,9 +426,9 @@ class MyGridViewPost extends StatelessWidget {
     Size screenSize = MediaQuery.of(context).size;
 
     return Padding(
-      padding: const EdgeInsets.all(4.0),
+      padding: const EdgeInsets.all(1.0),
       child: GridView.count(
-        crossAxisCount: 4,
+        crossAxisCount: 3,
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(), // Disable scrolling
         children: List.generate(6, (index) {
