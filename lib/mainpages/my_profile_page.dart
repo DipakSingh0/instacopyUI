@@ -72,41 +72,82 @@ class MyAppBar extends StatelessWidget {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          // PopupMenuButton to show accounts
-          PopupMenuButton<String>(
-            onSelected: (String value) {
-              // print(value);
+          GestureDetector(
+            onTap: () {
+              showModalBottomSheet(
+                context: context,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+                ),
+                builder: (BuildContext context) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        ListTile(
+                          leading: CircleAvatar(backgroundImage: AssetImage('lib/images/im1.jpg'),),
+                          title: const Text('dipak_singh000'),
+                          trailing: Icon(Icons.more_horiz),
+                          onTap: () {
+                            // Handle account selection
+                            Navigator.pop(context);
+                          },
+                        ),
+                        ListTile(
+                            leading: CircleAvatar(
+                            backgroundImage: AssetImage('lib/images/im2.jpg'),
+                          ),
+                          title: const Text('kittie_chyan'),
+                          subtitle: const Text('3 notifications'),
+                          trailing: Icon(Icons.more_horiz),
+                          onTap: () {
+                            // Handle account selection
+                            Navigator.pop(context);
+                          },
+                        ),
+                        ListTile(
+                             leading: CircleAvatar(
+                            backgroundImage: AssetImage('lib/images/im3.jpg'),
+                          ),
+                          title: const Text('smiley001'),
+                          trailing: Icon(Icons.more_horiz),
+                          onTap: () {
+                            // Handle add account action
+                            Navigator.pop(context);
+                          },
+                        ),
+                         ListTile(
+                          leading: Icon(Icons.add),
+                          title: const Text('Add Instagram Account'),
+                          // trailing: Icon(Icons.more_horiz),
+                          onTap: () {
+                            // Handle account selection
+                            Navigator.pop(context);
+                          },
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              );
             },
-            itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-              const PopupMenuItem<String>(
-                value: '1',
-                child: Text('dipak_singh000'),
-              ),
-              const PopupMenuItem<String>(
-                value: '2',
-                child: Text('kittie_chyan'),
-              ),
-              const PopupMenuItem<String>(
-                value: '3',
-                child: Text('Add Instagram Account'),
-              ),
-            ],
             child: Row(
-              children: [
-                const Icon(Icons.lock_outline),
-                const SizedBox(width: 3),
-                const Text(
+              children: const [
+                Icon(Icons.lock_outline),
+                SizedBox(width: 3),
+                Text(
                   'dipak_singh',
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 22,
                   ),
                 ),
-                const Icon(Icons.arrow_drop_down),
+                Icon(Icons.arrow_drop_down),
               ],
             ),
           ),
-          // SizedBox(width: 180),
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -142,6 +183,7 @@ class MyAppBar extends StatelessWidget {
     );
   }
 }
+
 
 //Row1 for profile
 class MyProfilePicRow extends StatelessWidget {
